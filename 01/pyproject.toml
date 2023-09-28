@@ -1,0 +1,6 @@
+[tool.coverage.run]
+omit = [
+    "test_predict.py",
+    "test_searching_lines.py",
+    "testfiles_creation.py",
+]

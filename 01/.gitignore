@@ -1,0 +1,15 @@
+__pycache__
+.venv
+.pytest_cache
+.mypy_cache
+.coverage
+file_or_str.txt
+test_one_line_sucsess.txt
+empty_file.txt
+everywhere_test.txt
+empty_middle.txt
+empty_first.txt
+empty_last.txt
+capital_file_.txt
+capital_file_1.txt
+similar_file.txt
