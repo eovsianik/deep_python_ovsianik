@@ -1,0 +1,5 @@
+[tool.coverage.run]
+omit = [
+    "test_findwords.py",
+    "test_avaragetime.py",
+]
