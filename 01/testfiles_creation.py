@@ -96,5 +96,17 @@ def file_creation():
     )
     similar_file.close()
 
+    all_str = open("last_file.txt", "w", encoding="utf-8")
+    all_str.writelines(
+        [
+            "rose and blue\n",
+            "string_give_all_string\n",
+            "roses and blueberries\n",
+            "straw roof\n",
+            "strawberry is tasty\n",
+        ]
+    )
+    all_str.close()
+
 
 file_creation()

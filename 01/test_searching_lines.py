@@ -150,3 +150,10 @@ def test_almost_similar_wordlist_and_text():
         line for line in search_lines("similar_file.txt", ["blue", "straw", "rose"])
     ]
     assert comparison == ["rose and blue\n", "straw roof\n"]
+
+
+def test_string_give_all_string():
+    comparison = [
+        line for line in search_lines("last_file.txt", ["string_give_all_string"])
+    ]
+    assert comparison == ["string_give_all_string\n"]
