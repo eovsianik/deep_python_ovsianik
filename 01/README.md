@@ -13,8 +13,8 @@ make
 ```
 Name                 Stmts   Miss  Cover
 ----------------------------------------
-score_predict.py         8      0   100%
+score_predict.py        10      0   100%
 searching_lines.py      11      0   100%
 ----------------------------------------
-TOTAL                   19      0   100%
+TOTAL                   21      0   100%
 ```
