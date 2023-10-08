@@ -2,7 +2,6 @@ from itertools import zip_longest
 
 
 class CustomList(list):
-
     def __add__(self, anotherlist):
         if isinstance(anotherlist, CustomList) or isinstance(anotherlist, list):
             return CustomList(

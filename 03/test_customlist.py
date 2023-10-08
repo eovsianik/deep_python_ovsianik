@@ -2,153 +2,255 @@ from customlist import CustomList
 
 
 def test_add_custom_and_custom_samesize():
-    assert CustomList([5, 1, 3]) + CustomList([1, 2, 7]) == CustomList([6, 3, 10])
+    newCustomList = CustomList([5, 1, 3]) + CustomList([1, 2, 7])
+    compareCustomList = CustomList([6, 3, 10])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_add_custom_and_notcustom_samesize():
-    assert CustomList([5, 1, 3]) + [1, 2, 7] == CustomList([6, 3, 10])
+    newCustomList = CustomList([5, 1, 3]) + [1, 2, 7]
+    compareCustomList = CustomList([6, 3, 10])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_add_custom_and_notcustom_emptylist():
-    assert CustomList([1, 2, 7]) + [] == CustomList([1, 2, 7])
+    newCustomList = CustomList([1, 2, 7]) + []
+    compareCustomList = CustomList([1, 2, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_add_custom_empty_and_notcustom():
-    assert CustomList() + [1, 2, 7] == CustomList([1, 2, 7])
+    newCustomList = CustomList() + [1, 2, 7]
+    compareCustomList = CustomList([1, 2, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_add_custom_and_custom_empty():
-    assert CustomList([1, 2, 7]) + CustomList() == CustomList([1, 2, 7])
+    newCustomList = CustomList([1, 2, 7]) + CustomList()
+    compareCustomList = CustomList([1, 2, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_add_custom_empty_and_custom():
-    assert CustomList() + CustomList([1, 2, 7]) == CustomList([1, 2, 7])
+    newCustomList = CustomList() + CustomList([1, 2, 7])
+    compareCustomList = CustomList([1, 2, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_add_custom_and_notcustom_bothempty():
-    assert CustomList() + [] == CustomList()
+    newCustomList = CustomList() + []
+    compareCustomList = CustomList()
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_add_custom_and_custom_bothempty():
-    assert CustomList() + CustomList() == CustomList()
+    newCustomList = CustomList() + CustomList()
+    compareCustomList = CustomList()
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_add_custom_and_custom_firstbigger():
-    assert CustomList([5, 1, 3, 7]) + CustomList([1, 2, 7]) == CustomList([6, 3, 10, 7])
+    newCustomList = CustomList([5, 1, 3, 7]) + CustomList([1, 2, 7])
+    compareCustomList = CustomList([6, 3, 10, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_add_custom_and_notcustom_firstbigger():
-    assert CustomList([5, 1, 3, 7]) + [1, 2, 7] == CustomList([6, 3, 10, 7])
+    newCustomList = CustomList([5, 1, 3, 7]) + [1, 2, 7]
+    compareCustomList = CustomList([6, 3, 10, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_add_custom_and_custom_secondbigger():
-    assert CustomList([1, 2, 7]) + CustomList([10, 1, 3, 7]) == CustomList(
-        [11, 3, 10, 7]
-    )
+    newCustomList = CustomList([1, 2, 7]) + CustomList([10, 1, 3, 7])
+    compareCustomList = CustomList([11, 3, 10, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_add_notcustom_and_custom_secondbigger():
-    assert CustomList([1, 2, 7]) + [10, 1, 3, 7] == CustomList([11, 3, 10, 7])
+    newCustomList = CustomList([1, 2, 7]) + [10, 1, 3, 7]
+    compareCustomList = CustomList([11, 3, 10, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_radd_notcustom_and_custom_samesize():
-    assert [1, 2, 7] + CustomList([5, 1, 3]) == CustomList([6, 3, 10])
+    newCustomList = [1, 2, 7] + CustomList([5, 1, 3])
+    compareCustomList = CustomList([6, 3, 10])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_radd_notcustom_emptylist_and_custom():
-    assert [] + CustomList([1, 2, 7]) == CustomList([1, 2, 7])
+    newCustomList = [] + CustomList([1, 2, 7])
+    compareCustomList = CustomList([1, 2, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_radd_notcustom_and_custom_empty():
-    assert [1, 2, 7] + CustomList() == CustomList([1, 2, 7])
+    newCustomList = [1, 2, 7] + CustomList()
+    compareCustomList = CustomList([1, 2, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_radd_notcustom_and_custom_bothempty():
-    assert [] + CustomList() == CustomList()
+    newCustomList = [] + CustomList()
+    compareCustomList = CustomList()
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_radd_notcustom_and_custom_firstbigger():
-    assert [5, 1, 3, 7] + CustomList([1, 2, 7]) == CustomList([6, 3, 10, 7])
+    newCustomList = [5, 1, 3, 7] + CustomList([1, 2, 7])
+    compareCustomList = CustomList([6, 3, 10, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_radd_custom_and_notcustom_secondbigger():
-    assert [1, 2, 7] + CustomList([10, 1, 3, 7]) == CustomList([11, 3, 10, 7])
+    newCustomList = [1, 2, 7] + CustomList([10, 1, 3, 7])
+    compareCustomList = CustomList([11, 3, 10, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_sub_custom_and_custom_samesize():
-    assert CustomList([5, 1, 3]) - CustomList([1, 2, 7]) == CustomList([4, -1, -4])
+    newCustomList = CustomList([5, 1, 3]) - CustomList([1, 2, 7])
+    compareCustomList = CustomList([4, -1, -4])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_sub_custom_and_notcustom_samesize():
-    assert CustomList([5, 1, 3]) - [1, 2, 7] == CustomList([4, -1, -4])
+    newCustomList = CustomList([5, 1, 3]) - [1, 2, 7]
+    compareCustomList = CustomList([4, -1, -4])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_sub_custom_and_notcustom_emptylist():
-    assert CustomList([1, 2, 7]) - [] == CustomList([1, 2, 7])
+    newCustomList = CustomList([1, 2, 7]) - []
+    compareCustomList = CustomList([1, 2, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_sub_custom_empty_and_notcustom():
-    assert CustomList() - [1, 2, 7] == CustomList([-1, -2, -7])
+    newCustomList = CustomList() - [1, 2, 7]
+    compareCustomList = CustomList([-1, -2, -7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_sub_custom_and_custom_empty():
-    assert CustomList([1, 2, 7]) - CustomList() == CustomList([1, 2, 7])
+    newCustomList = CustomList([1, 2, 7]) - CustomList()
+    compareCustomList = CustomList([1, 2, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_sub_custom_empty_and_custom():
-    assert CustomList() - CustomList([1, 2, 7]) == CustomList([-1, -2, -7])
+    newCustomList = CustomList() - CustomList([1, 2, 7])
+    compareCustomList = CustomList([-1, -2, -7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_sub_custom_and_notcustom_bothempty():
-    assert CustomList() - [] == CustomList()
+    newCustomList = CustomList() - []
+    compareCustomList = CustomList()
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_sub_custom_and_custom_bothempty():
-    assert CustomList() - CustomList() == CustomList()
+    newCustomList = CustomList() - CustomList()
+    compareCustomList = CustomList()
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_sub_custom_and_custom_firstbigger():
-    assert CustomList([5, 1, 3, 7]) - CustomList([1, 2, 7]) == CustomList(
-        [4, -1, -4, 7]
-    )
+    newCustomList = CustomList([5, 1, 3, 7]) - CustomList([1, 2, 7])
+    compareCustomList = CustomList([4, -1, -4, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_sub_custom_and_notcustom_firstbigger():
-    assert CustomList([5, 1, 3, 7]) - [1, 2, 7] == CustomList([4, -1, -4, 7])
+    newCustomList = CustomList([5, 1, 3, 7]) - [1, 2, 7]
+    compareCustomList = CustomList([4, -1, -4, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_sub_custom_and_custom_secondbigger():
-    assert CustomList([1, 2, 7]) - CustomList([10, 1, 3, 7]) == CustomList(
-        [-9, 1, 4, -7]
-    )
+    newCustomList = CustomList([1, 2, 7]) - CustomList([10, 1, 3, 7])
+    compareCustomList = CustomList([-9, 1, 4, -7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_sub_notcustom_and_custom_secondbigger():
-    assert CustomList([1, 2, 7]) - [10, 1, 3, 7] == CustomList([-9, 1, 4, -7])
+    newCustomList = CustomList([1, 2, 7]) - [10, 1, 3, 7]
+    compareCustomList = CustomList([-9, 1, 4, -7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_rsub_notcustom_and_custom_samesize():
-    assert [1, 2, 7] - CustomList([5, 1, 3]) == CustomList([-4, 1, 4])
+    newCustomList = [1, 2, 7] - CustomList([5, 1, 3])
+    compareCustomList = CustomList([-4, 1, 4])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_rsub_notcustom_emptylist_and_custom():
-    assert [] - CustomList([1, 2, 7]) == CustomList([-1, -2, -7])
+    newCustomList = [] - CustomList([1, 2, 7])
+    compareCustomList = CustomList([-1, -2, -7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_rsub_notcustom_and_custom_empty():
-    assert [1, 2, 7] - CustomList() == CustomList([1, 2, 7])
+    newCustomList = [1, 2, 7] - CustomList()
+    compareCustomList = CustomList([1, 2, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_rsub_notcustom_and_custom_bothempty():
-    assert [] - CustomList() == CustomList()
+    newCustomList = [] - CustomList()
+    compareCustomList = CustomList()
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_rsub_notcustom_and_custom_firstbigger():
-    assert [5, 1, 3, 7] - CustomList([1, 2, 7]) == CustomList([4, -1, -4, 7])
+    newCustomList = [5, 1, 3, 7] - CustomList([1, 2, 7])
+    compareCustomList = CustomList([4, -1, -4, 7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_rsub_custom_and_notcustom_secondbigger():
-    assert [1, 2, 7] - CustomList([10, 1, 3, 7]) == CustomList([-9, 1, 4, -7])
+    newCustomList = [1, 2, 7] - CustomList([10, 1, 3, 7])
+    compareCustomList = CustomList([-9, 1, 4, -7])
+    assert all(list(a == b for a, b in zip(newCustomList, compareCustomList)))
+    assert isinstance(newCustomList, CustomList)
 
 
 def test_str():
@@ -283,13 +385,19 @@ def test_inoutput_notchanged_add():
     third = CustomList([-1, 2, 3])
     forth = [2, 3]
     result = first + second + third + forth
-    assert (
-        first.__str__() == "[]:0"
-        and second.__str__() == "[1, 2, 3]:6"
-        and third.__str__() == "[-1, 2, 3]:4"
-        and forth == [2, 3]
-        and result.__str__() == "[2, 7, 6]:15"
-    )
+
+    comparefirst = CustomList([])
+    comparesecond = CustomList([1, 2, 3])
+    comparethird = CustomList([-1, 2, 3])
+    compareforth = [2, 3]
+    compareresult = CustomList([2, 7, 6])
+
+    assert all(list(a == b for a, b in zip(first, comparefirst)))
+    assert all(list(a == b for a, b in zip(second, comparesecond)))
+    assert all(list(a == b for a, b in zip(third, comparethird)))
+    assert all(list(a == b for a, b in zip(forth, compareforth)))
+    assert all(list(a == b for a, b in zip(result, compareresult)))
+
     assert (
         isinstance(first, CustomList)
         and isinstance(second, CustomList)
@@ -312,13 +420,18 @@ def test_inoutput_notchanged_radd():
     third = CustomList([-1, 2, 3])
     forth = CustomList([])
     result = first + second + third + forth
-    assert (
-        first == [2, 3]
-        and second.__str__() == "[1, 2, 3]:6"
-        and third.__str__() == "[-1, 2, 3]:4"
-        and forth.__str__() == "[]:0"
-        and result.__str__() == "[2, 7, 6]:15"
-    )
+
+    comparefirst = [2, 3]
+    comparesecond = CustomList([1, 2, 3])
+    comparethird = CustomList([-1, 2, 3])
+    compareforth = CustomList([])
+    compareresult = CustomList([2, 7, 6])
+
+    assert all(list(a == b for a, b in zip(first, comparefirst)))
+    assert all(list(a == b for a, b in zip(second, comparesecond)))
+    assert all(list(a == b for a, b in zip(third, comparethird)))
+    assert all(list(a == b for a, b in zip(forth, compareforth)))
+    assert all(list(a == b for a, b in zip(result, compareresult)))
     assert (
         isinstance(first, list)
         and isinstance(second, CustomList)
@@ -341,13 +454,19 @@ def test_inoutput_notchanged_sub():
     third = CustomList([-1, 2, 3])
     forth = [2, 3]
     result = first - second - third - forth
-    assert (
-        first.__str__() == "[]:0"
-        and second.__str__() == "[1, 2, 3]:6"
-        and third.__str__() == "[-1, 2, 3]:4"
-        and forth == [2, 3]
-        and result.__str__() == "[-2, -7, -6]:-15"
-    )
+
+    comparefirst = CustomList([])
+    comparesecond = CustomList([1, 2, 3])
+    comparethird = CustomList([-1, 2, 3])
+    compareforth = [2, 3]
+    compareresult = CustomList([-2, -7, -6])
+
+    assert all(list(a == b for a, b in zip(first, comparefirst)))
+    assert all(list(a == b for a, b in zip(second, comparesecond)))
+    assert all(list(a == b for a, b in zip(third, comparethird)))
+    assert all(list(a == b for a, b in zip(forth, compareforth)))
+    assert all(list(a == b for a, b in zip(result, compareresult)))
+
     assert (
         isinstance(first, CustomList)
         and isinstance(second, CustomList)
@@ -370,13 +489,19 @@ def test_inoutput_notchanged_rsub():
     third = CustomList([-1, 2, 3])
     forth = CustomList([])
     result = first - second - third - forth
-    assert (
-        first == [2, 3]
-        and second.__str__() == "[1, 2, 3]:6"
-        and third.__str__() == "[-1, 2, 3]:4"
-        and forth.__str__() == "[]:0"
-        and result.__str__() == "[2, -1, -6]:-5"
-    )
+
+    comparefirst = [2, 3]
+    comparesecond = CustomList([1, 2, 3])
+    comparethird = CustomList([-1, 2, 3])
+    compareforth = CustomList([])
+    compareresult = CustomList([2, -1, -6])
+
+    assert all(list(a == b for a, b in zip(first, comparefirst)))
+    assert all(list(a == b for a, b in zip(second, comparesecond)))
+    assert all(list(a == b for a, b in zip(third, comparethird)))
+    assert all(list(a == b for a, b in zip(forth, compareforth)))
+    assert all(list(a == b for a, b in zip(result, compareresult)))
+
     assert (
         isinstance(first, list)
         and isinstance(second, CustomList)

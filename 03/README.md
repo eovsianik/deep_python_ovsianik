@@ -13,7 +13,7 @@ make
 ```
 Name            Stmts   Miss  Cover
 -----------------------------------
-customlist.py      38      0   100%
+customlist.py      34      0   100%
 -----------------------------------
-TOTAL              38      0   100%
+TOTAL              34      0   100%
 ```
