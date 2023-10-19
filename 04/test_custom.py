@@ -25,18 +25,37 @@ def test_classvalue():
     assert ExampleCustomClass.custom_newline()
 
 
-def test_old_classvalue():
+def test_old_classvalue_1():
     with pytest.raises(AttributeError):
         ExampleCustomClass.x == 50
+
+
+def test_old_classvalue_2():
+    with pytest.raises(AttributeError):
         ExampleCustomClass.newline()
 
 
-def test_old_instancevalue():
+def test_old_instancevalue_1():
     instance_old = ExampleCustomClass()
     with pytest.raises(AttributeError):
         instance_old.x == 50
+
+
+def test_old_instancevalue_2():
+    instance_old = ExampleCustomClass()
+    with pytest.raises(AttributeError):
         instance_old.value == 99
+
+
+def test_old_instancevalue_3():
+    instance_old = ExampleCustomClass()
+    with pytest.raises(AttributeError):
         instance_old.longline()
+
+
+def test_old_instancevalue_4():
+    instance_old = ExampleCustomClass()
+    with pytest.raises(AttributeError):
         instance_old.textline == "qwerty"
 
 
