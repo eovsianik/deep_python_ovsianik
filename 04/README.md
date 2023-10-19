@@ -14,7 +14,7 @@ make
 Name                Stmts   Miss  Cover
 ---------------------------------------
 custom.py              15      0   100%
-userdescriptor.py      64      0   100%
+userdescriptor.py      69      0   100%
 ---------------------------------------
-TOTAL                  79      0   100%
+TOTAL                  84      0   100%
 ```

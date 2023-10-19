@@ -25,7 +25,7 @@ class Email:
     def __get__(self, instance, owner):
         if instance is None:
             return None  # pragma: no cover
-        return instance.__dict__[self.name]
+        return instance.__dict__.get(self.name, None)
 
     def __set__(self, instance, value):
         if "@" not in value or "." not in value:
@@ -67,11 +67,14 @@ class User:
     username = Username("username")
     email = Email("email")
     password = Password("password")
+    backup_email = Email("backup_email")
 
-    def __init__(self, username, email, password):
+    def __init__(self, username, email, password, backup_email=None):
         self.username = username
         self.email = email
         self.password = password
+        if backup_email is not None:
+            self.backup_email = backup_email
         self.list_users.append(self)
 
     def change_password(self, new_password):
@@ -82,8 +85,18 @@ class User:
         del self.username
         del self.password
         del self.email
+        if self.backup_email is not None:
+            del self.backup_email
         self.list_users.remove(self)
 
     @classmethod
     def get_all_users(cls):
-        return [(user.username, user.email, user.password) for user in cls.list_users]
+        return [
+            (
+                user.username,
+                user.email,
+                user.password,
+                user.backup_email if user.backup_email is not None else None,
+            )
+            for user in cls.list_users
+        ]
