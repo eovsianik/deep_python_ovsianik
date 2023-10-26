@@ -1,3 +1,4 @@
+import pytest
 from lruCache import LRUCache
 
 
@@ -113,3 +114,14 @@ def test_all_new():
     assert cache7.get("k8") == "val8"
     assert cache7.get("k9") == "val9"
     assert cache7.get("k10") == "val10"
+
+
+def test_invalid_capacity():
+    with pytest.raises(ValueError):
+        cache1 = LRUCache(-1)
+
+    with pytest.raises(ValueError):
+        cache2 = LRUCache(0)
+
+    with pytest.raises(ValueError):
+        cache3 = LRUCache("str")
