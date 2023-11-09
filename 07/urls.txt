@@ -1,0 +1,5 @@
+https://pytorch.org/blog/pytorch-2-1/
+https://matplotlib.org/stable/tutorials/pyplot.html
+https://numpy.org/doc/stable/
+https://seaborn.pydata.org/
+https://docs.python.org/3/library/math.html
