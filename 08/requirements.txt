@@ -1,0 +1,7 @@
+pytest
+flake8
+pylint
+pytest-cov
+black
+pytest-mock
+memory_profiler
