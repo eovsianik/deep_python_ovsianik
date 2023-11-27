@@ -2,7 +2,7 @@
 
 all: lint
 
-SRC_FILES := .\logLruCache.py
+SRC_FILES := .\log_lru_cache.py
 
 lint:
 	flake8 ${SRC_FILES} --max-line-length=100
