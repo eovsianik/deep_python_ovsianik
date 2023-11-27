@@ -1,4 +1,4 @@
-from lruCache import LRUCache
+from lru_cache import LRUCache
 
 
 def test_get_values():
@@ -113,3 +113,48 @@ def test_all_new():
     assert cache7.get("k8") == "val8"
     assert cache7.get("k9") == "val9"
     assert cache7.get("k10") == "val10"
+
+
+def test_like_in_task():
+    cache8 = LRUCache(2)
+    cache8.set("k1", "val1")
+    cache8.set("k2", "val2")
+    assert cache8.get("k3") is None
+    assert cache8.get("k2") == "val2"
+    assert cache8.get("k1") == "val1"
+    cache8.set("k3", "val3")
+    assert cache8.get("k3") == "val3"
+    assert cache8.get("k2") is None
+    assert cache8.get("k1") == "val1"
+
+
+def test_lrucashe_size_is_one():
+    cache9 = LRUCache(1)
+    cache9.set("k1", "val1")
+    assert cache9.get("k1") == "val1"
+    cache9.set("k2", "val2")
+    assert cache9.get("k1") is None
+    assert cache9.get("k2") == "val2"
+    cache9.set("k3", "val3")
+    assert cache9.get("k3") == "val3"
+    assert cache9.get("k2") is None
+    assert cache9.get("k1") is None
+
+
+def test_chage_value_not_key():
+    cache10 = LRUCache(4)
+    cache10.set("k1", "val1")
+    cache10.set("k2", "val2")
+    cache10.set("k3", "val3")
+    cache10.set("k4", "val4")
+    assert cache10.get("k1") == "val1"
+    assert cache10.get("k2") == "val2"
+    assert cache10.get("k3") == "val3"
+    assert cache10.get("k4") == "val4"
+    cache10.set("k1", "new_value")
+    cache10.set("k5", "val5")
+    assert cache10.get("k1") == "new_value"
+    assert cache10.get("k2") is None
+    assert cache10.get("k3") == "val3"
+    assert cache10.get("k4") == "val4"
+    assert cache10.get("k5") == "val5"

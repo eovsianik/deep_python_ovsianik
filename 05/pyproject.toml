@@ -1,4 +1,4 @@
 [tool.coverage.run]
 omit = [
-    "test_lruCache.py",
+    "test_lrucache.py",
 ]
