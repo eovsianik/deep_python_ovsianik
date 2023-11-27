@@ -2,7 +2,7 @@
 
 all: test lint
 
-SRC_FILES := .\lru_cache.py .\test_lrucache.py
+SRC_FILES := .\lru_cache.py .\test_lru_cache.py
 
 lint:
 	flake8 ${SRC_FILES} --max-line-length=100
