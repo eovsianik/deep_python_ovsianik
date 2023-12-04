@@ -1,4 +1,4 @@
-# To test and lint Homework01 follow this instructions:
+# To test and lint Homework10 follow this instructions:
 
 Choose the directory with current HW.
 ```sh
