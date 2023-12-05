@@ -9,7 +9,8 @@ def main():
         ext_modules=[
             Extension(
                 name="cjson",
-                sources=["./src/_cjson.c"],
+                sources=["./src/_cjson.c", "./src/cjson/cJSON.c"],
+                include_dirs=["./src/cjson"],
             )
         ],
     )
