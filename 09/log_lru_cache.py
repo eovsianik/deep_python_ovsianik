@@ -59,25 +59,32 @@ class LRUCache:
         future_cell["early"] = cell
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-s", "--stdout", action="store_true", help="Log to stdout")
-    parser.add_argument("-f", "--filter", help="Apply a custom filter to the logs")
-    args = parser.parse_args()
-
+def configure_logger(logger, stdout, enable_filter):
     logger.setLevel(logging.DEBUG)
 
     handler = logging.FileHandler("cache.log")
-    if args.stdout:
+    if stdout:
         handler_stdout = logging.StreamHandler()
         handler_stdout.setFormatter(logging.Formatter("%(asctime)s - %(message)s"))
 
     logger.addHandler(handler)
-    if args.stdout:
+    if stdout:
         logger.addHandler(handler_stdout)
 
-    if args.filter == "even":
+    if enable_filter == "even":
         handler.addFilter(EvenWordFilter())
+
+
+def parse_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-s", "--stdout", action="store_true", help="Log to stdout")
+    parser.add_argument("-f", "--filter", help="Apply a custom filter to the logs")
+    return parser.parse_args()
+
+
+def main():
+    args = parse_arguments()
+    configure_logger(logger, args.stdout, args.filter)
 
     cache = LRUCache(100)
     for i in range(100):
