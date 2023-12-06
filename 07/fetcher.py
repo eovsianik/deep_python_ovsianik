@@ -2,44 +2,61 @@ import argparse
 import asyncio
 import aiohttp
 
+MAX_COROS = 100
 
-async def fetch_url(url, semaphore):
-    async with aiohttp.ClientSession() as session:
-        async with semaphore:
-            async with session.get(url) as resp:
-                body = await resp.read()
-                return (url, resp.status, body)
-
-
-async def batch_fetch(urls, semaphore):
-    tasks = [asyncio.create_task(fetch_url(url, semaphore)) for url in urls]
-    return await asyncio.gather(*tasks, return_exceptions=True)
-
-
-async def main():
+def parse_arguments():
     parser = argparse.ArgumentParser(
         description="Script for fetching URLs with concurrent requests"
     )
     parser.add_argument(
         "-c", "--connections", type=int, help="Number of concurrent requests"
     )
-    parser.add_argument("file_path", type=open, help="path to file with urls")
+    parser.add_argument("file_path", type=str, help="path to file with urls")
     args = parser.parse_args()
+    return args
 
-    semaphore = asyncio.Semaphore(args.connections)
-    urls = args.file_path.read().rstrip("\n").split("\n")
-    results = await batch_fetch(urls, semaphore)
 
-    for i, result in enumerate(results):
-        if isinstance(result, Exception):
-            print(f"Error occurred for URL {urls[i]}: {result}")
+async def fetch_url(session, url, chunk_size, filename):
+    async with session.get(url) as resp:
+        with open(filename, 'wb') as fd:
+            async for chunk in resp.content.iter_chunked(chunk_size):
+                fd.write(chunk)
+
+async def file_reader(queue, path):
+    with open(path) as f:
+        for line in f:
+            await queue.put(line)
+    await queue.put(None)
+
+async def fetch(queue, session):
+    coros = []
+    counter = 0
+    while True:
+        url = await queue.get()
+        if url is None:
+            print("EXIT!")
+            break
+        
+        if len(asyncio.all_tasks()) <= MAX_COROS:
+            coros.append(asyncio.create_task(fetch_url(session, url, 100, f"content-{counter}.html")))
+            counter += 1
         else:
-            url, status, body = result
-            if 200 <= status < 300:
-                with open(f"./information{i}.html", "w") as url_info:
-                    url_info.write(body.decode())
+            await queue.put(url)
+            continue
+    
+    await asyncio.gather(*coros, return_exceptions=True)
 
-    print(len(results))
+
+async def main():
+    queue = asyncio.Queue(maxsize=20)
+    args = parse_arguments()
+
+    fr = asyncio.create_task(file_reader(queue, args.file_path))
+
+    async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(limit=args.connections)) as session:
+        await asyncio.create_task(fetch(queue, session))
+
+    await fr
 
 
 if __name__ == "__main__":
